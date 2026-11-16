@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BEC — Brothers Engineer's & Construction | Civil Engineering Portfolio</title>
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- External Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              navy: '#001C54',
+              navyDark: '#001238',
+              navyLight: '#0A2E75',
+              gold: '#D48E0D',
+              goldLight: '#F3B43F',
+              slate: '#6B7280',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-gold selection:text-white">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Navigation Header -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Identity & Custom Vector Logo -->
+        <a href="#home" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 p-1 flex items-center justify-center shadow-sm group-hover:border-brand-gold transition-colors">
+            <svg viewBox="0 0 120 120" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-label="BEC Logo">
+              <path d="M 22 65 A 48 48 0 0 1 65 12 A 52 52 0 0 0 18 68 Z" fill="#001C54"/>
+              <path d="M 26 58 A 42 42 0 0 1 78 18 A 45 45 0 0 0 23 62 Z" fill="#D48E0D"/>
+              <polygon points="34,54 34,38 43,33 43,54" fill="#6B7280"/>
+              <polygon points="45,54 45,30 56,24 56,54" fill="#6B7280"/>
+              <polygon points="53,54 53,20 65,14 65,54" fill="#001C54"/>
+              <polygon points="65,14 75,20 75,54 65,54" fill="#001C54"/>
+              <rect x="68" y="23" width="2" height="22" fill="#FFFFFF"/>
+              <rect x="71" y="25" width="2" height="20" fill="#FFFFFF"/>
+              <rect x="86" y="22" width="4" height="36" fill="#D48E0D"/>
+              <rect x="76" y="26" width="38" height="3" fill="#D48E0D"/>
+              <polygon points="88,18 76,26 114,26" fill="none" stroke="#D48E0D" stroke-width="1.5"/>
+              <line x1="106" y1="29" x2="106" y2="44" stroke="#D48E0D" stroke-width="1.5"/>
+              <circle cx="106" cy="46" r="2.2" fill="#D48E0D"/>
+              <polyline points="24,57 60,39 96,57" fill="none" stroke="#001C54" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="57" y="47" width="2.5" height="2.5" fill="#001C54"/>
+              <rect x="60.5" y="47" width="2.5" height="2.5" fill="#001C54"/>
+              <rect x="57" y="50.5" width="2.5" height="2.5" fill="#001C54"/>
+              <rect x="60.5" y="50.5" width="2.5" height="2.5" fill="#001C54"/>
+              <text x="60" y="79" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="25" letter-spacing="1">
+                <tspan fill="#001C54">B</tspan><tspan fill="#D48E0D">E</tspan><tspan fill="#001C54">C</tspan>
+              </text>
+              <path d="M 35 84 Q 60 95 85 84 L 82 91 Q 60 101 38 91 Z" fill="#6B7280"/>
+              <rect x="44" y="92" width="4" height="4" fill="#6B7280" transform="rotate(15 44 92)"/>
+              <rect x="58" y="95" width="4" height="4" fill="#6B7280"/>
+              <rect x="72" y="92" width="4" height="4" fill="#6B7280" transform="rotate(-15 72 92)"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-display font-extrabold text-xl tracking-tight text-brand-navy">BEC</span>
+              <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-brand-gold border border-amber-200/80">Est. Dhaka</span>
+            </div>
+            <p class="text-xs font-semibold text-slate-500 tracking-wide">BROTHERS Engineer's &amp; Construction</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#home" class="text-sm font-semibold text-slate-700 hover:text-brand-navy transition-colors">Home</a>
+          <a href="#about" class="text-sm font-semibold text-slate-700 hover:text-brand-navy transition-colors">About Us</a>
+          <a href="#skills" class="text-sm font-semibold text-slate-700 hover:text-brand-navy transition-colors">Expertise &amp; Skills</a>
+          <a href="#projects" class="text-sm font-semibold text-slate-700 hover:text-brand-navy transition-colors">Projects</a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white text-sm font-semibold shadow-sm hover:shadow transition-all">
+            <span>Consult Now</span>
+            <i class="fa-solid fa-arrow-right text-xs text-brand-goldLight"></i>
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2.5 rounded-xl text-brand-navy hover:bg-slate-100 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-lg">
+      <a href="#home" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-navy">Home</a>
+      <a href="#about" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-navy">About Us</a>
+      <a href="#skills" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-navy">Expertise &amp; Skills</a>
+      <a href="#projects" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-navy">Projects</a>
+      <a href="#contact" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold bg-brand-navy text-white text-center mt-2">Get Free Consultation</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-20">
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative overflow-hidden bg-brand-navyDark text-white">
+      <div class="absolute inset-0 blueprint-grid"></div>
+      <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-gold/20 blur-3xl"></div>
+      <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-blue-600/20 blur-3xl"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Hero Copy -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm">
+              <span class="w-2 h-2 rounded-full bg-brand-goldLight animate-pulse"></span>
+              <span class="text-xs sm:text-sm font-semibold tracking-wide text-amber-200 uppercase">Structural &amp; Civil Engineering Excellence</span>
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12]">
+              Engineering Landmarks with <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-goldLight to-amber-300">Precision &amp; Integrity.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+              Welcome to <strong class="text-white">BEC — Brothers Engineer's &amp; Construction</strong>. Founded by <strong class="text-white">Engr. Rofikunnobi</strong> in Dhaka, we deliver resilient structural design, multi-story residential &amp; commercial construction, and turnkey civil engineering solutions built to stand for generations.
+            </p>
+
+            <!-- Hero CTA Buttons -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="#projects" class="px-7 py-3.5 rounded-xl bg-brand-gold hover:bg-amber-500 text-brand-navyDark font-bold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition-all flex items-center gap-2">
+                <span>Explore Featured Projects</span>
+                <i class="fa-solid fa-building-circle-check"></i>
+              </a>
+              <a href="#contact" class="px-7 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-sm sm:text-base backdrop-blur-sm transition-all flex items-center gap-2">
+                <i class="fa-solid fa-phone-volume text-brand-goldLight"></i>
+                <span>01717-024736</span>
+              </a>
+            </div>
+
+            <!-- Key Engineering Metrics -->
+            <div class="grid grid-cols-3 gap-4 sm:gap-8 pt-8 border-t border-white/15">
+              <div>
+                <p class="font-display text-2xl sm:text-3xl font-extrabold text-brand-goldLight">8+</p>
+                <p class="text-xs sm:text-sm text-slate-300 mt-1">Years Engineering Experience</p>
+              </div>
+              <div>
+                <p class="font-display text-2xl sm:text-3xl font-extrabold text-white">35+</p>
+                <p class="text-xs sm:text-sm text-slate-300 mt-1">Structures Designed &amp; Built</p>
+              </div>
+              <div>
+                <p class="font-display text-2xl sm:text-3xl font-extrabold text-brand-goldLight">100%</p>
+                <p class="text-xs sm:text-sm text-slate-300 mt-1">BNBC Code Compliance</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Hero Showcase Card -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-3xl bg-white/5 border border-white/15 p-3 backdrop-blur-md shadow-2xl">
+              <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-800">
+                <img 
+                  src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Modern High-Rise Construction Site with Tower Crane"
+                  onerror="this.src='https://placehold.co/800x600/001C54/F3B43F?text=BEC+Structural+Engineering'"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-navyDark/90 via-brand-navyDark/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3">
+                  <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-goldLight">Dhaka Cantonment &amp; Nationwide</span>
+                    <p class="text-white font-bold text-sm sm:text-base">Turnkey Design, Piling &amp; Construction</p>
+                  </div>
+                  <div class="w-11 h-11 rounded-xl bg-brand-gold text-brand-navyDark flex items-center justify-center shrink-0 shadow-md">
+                    <i class="fa-solid fa-compass-drafting text-lg"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Credentials Strip inside Card -->
+              <div class="mt-3 p-4 rounded-2xl bg-brand-navy/90 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-brand-goldLight">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-400">Headquarters</p>
+                    <p class="text-xs sm:text-sm font-semibold text-white">West Vashantek, Dhaka Cant., Dhaka-1206</p>
+                  </div>
+                </div>
+                <a href="#contact" class="text-xs font-bold text-brand-goldLight hover:underline whitespace-nowrap">
+                  Get Directions &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME & COMPANY PROFILE SECTION -->
+    <section id="about" class="py-20 lg:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left Visual Composition -->
+          <div class="lg:col-span-5 relative">
+            <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 aspect-[4/5]">
+              <img 
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80" 
+                alt="Civil Engineer Reviewing Architectural Blueprints"
+                onerror="this.src='https://placehold.co/800x1000/001C54/FFFFFF?text=Engr.+Rofikunnobi+%7C+BEC'"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Floating Brand Emblem Badge -->
+            <div class="mt-6 sm:mt-0 sm:absolute sm:-bottom-6 sm:-right-6 bg-white rounded-2xl p-5 shadow-xl border border-slate-200 max-w-xs">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-brand-navy text-brand-goldLight flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-helmet-safety text-xl"></i>
+                </div>
+                <div>
+                  <p class="font-display font-bold text-brand-navy text-base">Engr. Rofikunnobi</p>
+                  <p class="text-xs font-semibold text-brand-gold">Founder</p>
+                  <p class="text-xs text-slate-500 mt-0.5">BEC Brothers Engineer's &amp; Construction</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Narrative & Core Values -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-brand-gold text-xs font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-layer-group"></i>
+              <span>About Me &amp; BEC Engineering</span>
+            </div>
+
+            <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy leading-tight">
+              Bridging Structural Science with Modern Architectural Vision
+            </h2>
+
+            <p class="text-slate-600 text-base leading-relaxed">
+              I am <strong class="text-brand-navy">Engr. Rofikunnobi</strong>, Founder of <strong class="text-brand-navy">BEC — Brothers Engineer's &amp; Construction</strong>. Based in West Vashantek, Dhaka Cantonment, our firm specializes in end-to-end civil engineering consultancy, soil investigation, structural analysis, and high-precision building construction.
+            </p>
+
+            <p class="text-slate-600 text-base leading-relaxed">
+              In a rapidly urbanizing Bangladesh, safety and structural longevity are non-negotiable. Every blueprint we draft and every foundation we pour adheres strictly to the <strong class="text-slate-800">Bangladesh National Building Code (BNBC)</strong> and seismic safety standards—ensuring peace of mind for homeowners, developers, and industrial clients alike.
+            </p>
+
+            <!-- Feature Pillars -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shrink-0 mt-0.5">
+                  <i class="fa-solid fa-shield-halved text-brand-goldLight"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-brand-navy text-sm">Earthquake-Resistant Design</h3>
+                  <p class="text-xs text-slate-600 mt-1 leading-relaxed">Advanced ETABS &amp; STAAD.Pro seismic load modeling for multi-story RCC structures.</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shrink-0 mt-0.5">
+                  <i class="fa-solid fa-calculator text-brand-goldLight"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-brand-navy text-sm">Cost-Optimized BOQ</h3>
+                  <p class="text-xs text-slate-600 mt-1 leading-relaxed">Transparent material estimation and value engineering without compromising strength.</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shrink-0 mt-0.5">
+                  <i class="fa-solid fa-hard-hat text-brand-goldLight"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-brand-navy text-sm">Strict Site Supervision</h3>
+                  <p class="text-xs text-slate-600 mt-1 leading-relaxed">Continuous QA/QC testing for concrete slump, rebar detailing, and curing schedules.</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shrink-0 mt-0.5">
+                  <i class="fa-solid fa-file-signature text-brand-goldLight"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-brand-navy text-sm">RAJUK &amp; Municipal Approvals</h3>
+                  <p class="text-xs text-slate-600 mt-1 leading-relaxed">Complete architectural &amp; structural plan preparation for smooth regulatory clearance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS & ENGINEERING CAPABILITIES SECTION -->
+    <section id="skills" class="py-20 lg:py-28 bg-slate-50 border-y border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-blue-50 border border-blue-200 text-brand-navy text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-gears text-brand-gold"></i>
+            <span>Technical Competencies</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy">
+            Core Engineering Skills &amp; Software Stack
+          </h2>
+          <p class="text-slate-600 text-base">
+            Combining field-tested construction management with industry-standard structural modeling, CAD drafting, and geotechnical analysis.
+          </p>
+        </div>
+
+        <!-- 3-Column Core Disciplines -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+          <div class="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-14 h-14 rounded-2xl bg-brand-navy text-brand-goldLight flex items-center justify-center mb-6 shadow-sm">
+              <i class="fa-solid fa-building text-2xl"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-navy mb-3">Structural Design &amp; Analysis</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-5">
+              Complete RCC and steel structure modeling, wind and earthquake load calculations, foundation &amp; deep piling design for residential towers and commercial complexes.
+            </p>
+            <ul class="space-y-2.5 text-sm font-medium text-slate-700">
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-gold"></i><span>RCC Frame &amp; Shear Wall Design</span></li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-gold"></i><span>Cast-in-Situ &amp; Precast Piling</span></li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-gold"></i><span>Sub-Soil Investigation &amp; Bearing Analysis</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-14 h-14 rounded-2xl bg-brand-gold text-brand-navyDark flex items-center justify-center mb-6 shadow-sm">
+              <i class="fa-solid fa-trowel-bricks text-2xl"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-navy mb-3">Turnkey Construction &amp; QA/QC</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-5">
+              End-to-end project execution from excavation and formwork to MEP integration and luxury interior finishing under dedicated site engineers.
+            </p>
+            <ul class="space-y-2.5 text-sm font-medium text-slate-700">
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-navy"></i><span>Concrete Mix Design &amp; Cylinder Testing</span></li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-navy"></i><span>Bar Bending Schedule (BBS) &amp; Steel QA</span></li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-navy"></i><span>Safety Compliance &amp; Milestone Tracking</span></li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-14 h-14 rounded-2xl bg-brand-navy text-brand-goldLight flex items-center justify-center mb-6 shadow-sm">
+              <i class="fa-solid fa-drafting-compass text-2xl"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-brand-navy mb-3">Architectural Planning &amp; Estimation</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-5">
+              Space-efficient floor plans, 3D exterior visualization, detailed Bill of Quantities (BOQ), and Retrofitting assessments for existing buildings.
+            </p>
+            <ul class="space-y-2.5 text-sm font-medium text-slate-700">
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-gold"></i><span>2D Working Drawings &amp; 3D Renders</span></li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-gold"></i><span>Detailed Cost Estimation &amp; Rate Analysis</span></li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-gold"></i><span>Structural Strengthening &amp; Retrofitting</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Engineering Software Proficiency Bars -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
+            <div>
+              <h3 class="font-display text-xl font-bold text-brand-navy">Engineering Software &amp; Tools Proficiency</h3>
+              <p class="text-sm text-slate-500">Digital precision across design, structural finite element analysis, and project scheduling.</p>
+            </div>
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-100 text-brand-navy">
+              <i class="fa-solid fa-laptop-code text-brand-gold"></i> CAD &amp; BIM Workflow
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+            <div>
+              <div class="flex justify-between text-sm font-bold mb-2">
+                <span class="text-brand-navy">AutoCAD (2D Architectural &amp; Structural Detailing)</span>
+                <span class="text-brand-gold">98%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-brand-navy rounded-full" style="width: 98%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-bold mb-2">
+                <span class="text-brand-navy">ETABS &amp; SAFE (Multi-Story &amp; Foundation Modeling)</span>
+                <span class="text-brand-gold">95%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-brand-gold rounded-full" style="width: 95%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-bold mb-2">
+                <span class="text-brand-navy">STAAD.Pro (Steel &amp; Industrial Truss Analysis)</span>
+                <span class="text-brand-gold">90%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-brand-navy rounded-full" style="width: 90%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-bold mb-2">
+                <span class="text-brand-navy">Revit BIM &amp; SketchUp (3D Structural Visualization)</span>
+                <span class="text-brand-gold">88%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-brand-gold rounded-full" style="width: 88%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-bold mb-2">
+                <span class="text-brand-navy">MS Project &amp; Primavera P6 (Construction Scheduling)</span>
+                <span class="text-brand-gold">92%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-brand-navy rounded-full" style="width: 92%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-bold mb-2">
+                <span class="text-brand-navy">BOQ Estimation &amp; BNBC 2020 Seismic Compliance</span>
+                <span class="text-brand-gold">97%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-brand-gold rounded-full" style="width: 97%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS PORTFOLIO SECTION -->
+    <section id="projects" class="py-20 lg:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-brand-gold text-xs font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-city"></i>
+              <span>Featured Portfolio</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-brand-navy">
+              Signature Engineering &amp; Construction Projects
+            </h2>
+            <p class="text-slate-600 max-w-2xl text-base">
+              Explore selected residential, commercial, and industrial infrastructure projects engineered and supervised by BEC across Dhaka and surrounding regions.
+            </p>
+          </div>
+
+          <!-- Filter Buttons -->
+          <div id="project-filters" class="flex flex-wrap gap-2">
+            <button data-filter="all" class="filter-btn active px-4 py-2.5 rounded-xl text-sm font-bold bg-brand-navy text-white shadow-sm transition-all">
+              All Projects
+            </button>
+            <button data-filter="residential" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+              Residential Towers
+            </button>
+            <button data-filter="commercial" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+              Commercial
+            </button>
+            <button data-filter="industrial" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+              Industrial &amp; Civil
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid (Populated via JavaScript) -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT & CONSULTATION SECTION -->
+    <section id="contact" class="py-20 lg:py-28 bg-brand-navyDark text-white relative overflow-hidden">
+      <div class="absolute inset-0 dot-matrix-bg"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Left Official Company Contact Card -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/10 border border-white/15 text-brand-goldLight text-xs font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-handshake"></i>
+              <span>Start Your Project</span>
+            </div>
+
+            <h2 class="font-display text-3xl sm:text-4xl font-extrabold leading-tight">
+              Get in Touch with <span class="text-brand-goldLight">BEC Brothers</span>
+            </h2>
+
+            <p class="text-slate-300 text-base leading-relaxed">
+              Planning a residential building, commercial complex, soil test, or structural assessment? Reach out directly via phone, email, or visit our Dhaka Cantonment office.
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <!-- Address -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-brand-gold text-brand-navyDark flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-location-dot text-lg"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-brand-goldLight">Office Address</p>
+                  <p class="text-white font-semibold text-sm sm:text-base mt-0.5">West Vashantek, Dhaka Cant., Dhaka-1206</p>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between gap-3">
+                <div class="flex items-start gap-4 min-w-0">
+                  <div class="w-11 h-11 rounded-xl bg-brand-gold text-brand-navyDark flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-envelope text-lg"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-xs font-bold uppercase tracking-wider text-brand-goldLight">Email Address</p>
+                    <a href="mailto:rofikunnobi.info@gmail.com" class="text-white font-semibold text-sm sm:text-base hover:text-brand-goldLight transition-colors truncate block mt-0.5">
+                      rofikunnobi.info@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <button onclick="copyToClipboard('rofikunnobi.info@gmail.com', 'Email address')" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white shrink-0 transition-colors" title="Copy Email">
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+              </div>
+
+              <!-- Mobile Numbers -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between gap-3">
+                <div class="flex items-start gap-4">
+                  <div class="w-11 h-11 rounded-xl bg-brand-gold text-brand-navyDark flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-phone text-lg"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold uppercase tracking-wider text-brand-goldLight">Mobile Hotline</p>
+                    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-0.5">
+                      <a href="tel:+8801717024736" class="text-white font-bold text-sm sm:text-base hover:text-brand-goldLight transition-colors">01717024736</a>
+                      <span class="text-slate-500">|</span>
+                      <a href="tel:+8801710567687" class="text-white font-bold text-sm sm:text-base hover:text-brand-goldLight transition-colors">01710567687</a>
+                    </div>
+                  </div>
+                </div>
+                <button onclick="copyToClipboard('01717024736, 01710567687', 'Phone numbers')" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white shrink-0 transition-colors" title="Copy Numbers">
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Consultation Inquiry Form -->
+          <div class="lg:col-span-7">
+            <div class="bg-white text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-200">
+              <h3 class="font-display text-2xl font-extrabold text-brand-navy">Request a Project Consultation</h3>
+              <p class="text-sm text-slate-500 mt-1 mb-6">Fill out your project requirements and Engr. Rofikunnobi's team will respond within 24 hours.</p>
+
+              <form id="contact-form" class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="client-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Full Name *</label>
+                    <input type="text" id="client-name" required placeholder="e.g., Tanvir Ahmed" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/15" />
+                  </div>
+                  <div>
+                    <label for="client-phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Phone Number *</label>
+                    <input type="tel" id="client-phone" required placeholder="e.g., 017XX-XXXXXX" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/15" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="client-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Email Address</label>
+                    <input type="email" id="client-email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/15" />
+                  </div>
+                  <div>
+                    <label for="service-type" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Service Required *</label>
+                    <select id="service-type" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/15">
+                      <option value="Structural Design & Architectural Plan">Structural Design &amp; Architectural Plan</option>
+                      <option value="Turnkey Building Construction">Turnkey Building Construction</option>
+                      <option value="Soil Test & Piling Foundation">Soil Test &amp; Piling Foundation</option>
+                      <option value="BOQ Cost Estimation & Supervision">BOQ Cost Estimation &amp; Site Supervision</option>
+                      <option value="Building Retrofitting & Inspection">Building Retrofitting &amp; Structural Audit</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="project-location" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Plot Location &amp; Approximate Size (Katha / Sq. Ft.)</label>
+                  <input type="text" id="project-location" placeholder="e.g., Mirpur DOHS / Uttara — 5 Katha, G+7 Storied" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/15" />
+                </div>
+
+                <div>
+                  <label for="project-message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Project Details *</label>
+                  <textarea id="project-message" rows="4" required placeholder="Describe your building plans, timeline, or engineering consultation needs..." class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/15"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-base shadow-lg shadow-brand-navy/20 transition-all flex items-center justify-center gap-2.5">
+                  <span>Send Engineering Inquiry</span>
+                  <i class="fa-solid fa-paper-plane text-brand-goldLight"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-400 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center">
+            <svg viewBox="0 0 120 120" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 22 65 A 48 48 0 0 1 65 12 A 52 52 0 0 0 18 68 Z" fill="#001C54"/>
+              <path d="M 26 58 A 42 42 0 0 1 78 18 A 45 45 0 0 0 23 62 Z" fill="#D48E0D"/>
+              <polygon points="53,54 53,20 65,14 65,54" fill="#001C54"/>
+              <polygon points="65,14 75,20 75,54 65,54" fill="#001C54"/>
+              <rect x="86" y="22" width="4" height="36" fill="#D48E0D"/>
+              <rect x="76" y="26" width="38" height="3" fill="#D48E0D"/>
+              <polyline points="24,57 60,39 96,57" fill="none" stroke="#001C54" stroke-width="4"/>
+              <text x="60" y="79" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="25">
+                <tspan fill="#001C54">B</tspan><tspan fill="#D48E0D">E</tspan><tspan fill="#001C54">C</tspan>
+              </text>
+            </svg>
+          </div>
+          <div>
+            <p class="font-display font-bold text-white text-base">BEC — Brothers Engineer's &amp; Construction</p>
+            <p class="text-xs text-slate-400">West Vashantek, Dhaka Cant., Dhaka-1206 • Email: rofikunnobi.info@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-400 text-center md:text-right">
+          <p>&copy; <span id="current-year"></span> BEC Brothers Engineer's &amp; Construction. All rights reserved.</p>
+          <p class="mt-1 text-slate-500">Engineered for Structural Integrity &amp; Lasting Value.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 animate-modal">
+      <div class="relative h-64 sm:h-72 bg-slate-200">
+        <img id="modal-img" src="" alt="Project Preview" class="w-full h-full object-cover" />
+        <button id="close-modal-btn" aria-label="Close Modal" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-950/70 hover:bg-slate-950 text-white flex items-center justify-center transition-colors">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+        <div class="absolute bottom-4 left-4">
+          <span id="modal-category" class="px-3 py-1 rounded-xl bg-brand-gold text-brand-navyDark text-xs font-extrabold uppercase tracking-wider shadow"></span>
+        </div>
+      </div>
+      <div class="p-6 sm:p-8 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h3 id="modal-title" class="font-display text-2xl font-extrabold text-brand-navy"></h3>
+          <span id="modal-status" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200"></span>
+        </div>
+        <p id="modal-location" class="text-sm font-semibold text-slate-500 flex items-center gap-2">
+          <i class="fa-solid fa-location-dot text-brand-gold"></i>
+          <span></span>
+        </p>
+        <p id="modal-desc" class="text-sm sm:text-base text-slate-600 leading-relaxed"></p>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+            <p class="text-[11px] uppercase font-bold text-slate-400">Structure Type</p>
+            <p id="modal-structure" class="text-xs sm:text-sm font-bold text-brand-navy mt-0.5"></p>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+            <p class="text-[11px] uppercase font-bold text-slate-400">Built-up Area</p>
+            <p id="modal-area" class="text-xs sm:text-sm font-bold text-brand-navy mt-0.5"></p>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 col-span-2 sm:col-span-1">
+            <p class="text-[11px] uppercase font-bold text-slate-400">BEC Scope</p>
+            <p id="modal-scope" class="text-xs sm:text-sm font-bold text-brand-navy mt-0.5"></p>
+          </div>
+        </div>
+
+        <div class="pt-4 flex justify-end gap-3 border-t border-slate-100">
+          <button id="close-modal-footer" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold transition-colors">Close</button>
+          <a href="#contact" onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white text-sm font-bold transition-colors">Inquire Similar Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
